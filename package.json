@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.3.0"
+  },
+  "name": "ocaa-api",
+  "version": "1.0.0",
+  "description": "Orange County NY A.A. Meetings API",
+  "main": "index.js",
+  "repository": "https://github.com/JamesRosenthal/ocaa-api.git",
+  "author": "jcrosenthal@gmail.com",
+  "license": "MIT",
+  "private": false
+}

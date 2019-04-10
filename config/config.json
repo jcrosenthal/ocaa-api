@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "jcrosenthal",
+    "password": "Winter72!",
+    "database": "ocaadb",
+    "host": "ocaa.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "jcrosenthal",
+    "password": "Winter72!",
+    "database": "ocaadb",
+    "host": "ocaa.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "jcrosenthal",
+    "password": "Winter72!",
+    "database": "ocaadb",
+    "host": "ocaa.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}
