@@ -17,43 +17,43 @@ module.exports = {
       is_wheelchair_accessible: {
         type: Sequelize.BOOLEAN
       },
-      address_administrative_area_level_1: {
+      administrative_area_level_1: {
         type: Sequelize.STRING
       },
-      address_administrative_area_level_2: {
+      administrative_area_level_2: {
         type: Sequelize.STRING
       },
-      address_administrative_area_level_3: {
+      administrative_area_level_3: {
         type: Sequelize.STRING
       },
-      address_country: {
+      country: {
         type: Sequelize.STRING
       },
-      address_lat: {
+      lat: {
         type: Sequelize.DECIMAL(10,6)
       },
-      address_lng: {
+      lng: {
         type: Sequelize.DECIMAL(10,6)
       },
-      address_locality: {
+      locality: {
         type: Sequelize.STRING
       },
-      address_neighborhood: {
+      neighborhood: {
         type: Sequelize.STRING
       },
       location: {
         type: Sequelize.STRING
       },
-      address_postal_code: {
+      postal_code: {
         type: Sequelize.INTEGER
       },
-      address_postal_code_suffix: {
+      postal_code_suffix: {
         type: Sequelize.INTEGER
       },
-      address_route: {
+      route: {
         type: Sequelize.STRING
       },
-      address_street_number: {
+      street_number: {
         type: Sequelize.INTEGER
       },
       createdAt: {

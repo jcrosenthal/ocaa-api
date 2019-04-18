@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     group_id: DataTypes.INTEGER,
     day: DataTypes.STRING,
     start: DataTypes.TIME,
-    notes: DataTypes.STRING
+    notes: DataTypes.STRING,
+    format: DataTypes.STRING
   }, {});
   Meeting.associate = function (models) {
     // associations can be defined here

@@ -1,7 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
+var cors = require('cors');
 const app = express()
+
 app.use(bodyParser.json())
 
 // API ENDPOINTS
@@ -19,12 +20,46 @@ const {
     Day
 } = require('./models');
 
-console.log(Group);
+var allowedOrigins = ['http://0.0.0.0:8080'];
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin 
+    // (like mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 // create a group
 app.post('/api/groups', (req, res) => {
-    Group.create(req.body)
-        .then(group => res.json(group));
+
+    Group.create(Object.assign({}, req.body, {
+            meetings: undefined
+        }))
+        .then(group => {
+
+            if (req.body.meetings) {
+                req.body.meetings.forEach((m, i) => {
+                    Meeting.create(Object.assign({}, m, {
+                            group_id: group.id
+                        }))
+                        .then(() => {
+                            if (i === req.body.meetings.length - 1) {
+                                return res.json(group.id);
+                            }
+                        });
+                });
+            } else {
+                return res.json(group);
+            }
+
+        });
+
 });
 
 app.get('/api/meetings/:groupId?', (req, res) => {

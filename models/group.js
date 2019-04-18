@@ -8,21 +8,20 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         name: DataTypes.STRING,
-        format: DataTypes.STRING,
         is_wheelchair_accessible: DataTypes.BOOLEAN,
-        address_administrative_area_level_1: DataTypes.STRING,
-        address_administrative_area_level_2: DataTypes.STRING,
-        address_administrative_area_level_3: DataTypes.STRING,
-        address_country: DataTypes.STRING,
-        address_lat: DataTypes.DECIMAL(10,6),
-        address_lng: DataTypes.DECIMAL(10,6),
-        address_locality: DataTypes.STRING,
-        address_neighborhood: DataTypes.STRING,
+        administrative_area_level_1: DataTypes.STRING,
+        administrative_area_level_2: DataTypes.STRING,
+        administrative_area_level_3: DataTypes.STRING,
+        country: DataTypes.STRING,
+        lat: DataTypes.DECIMAL(10,6),
+        lng: DataTypes.DECIMAL(10,6),
+        locality: DataTypes.STRING,
+        neighborhood: DataTypes.STRING,
         location: DataTypes.STRING,
-        address_postal_code: DataTypes.INTEGER,
-        address_postal_code_suffix: DataTypes.INTEGER,
-        address_route: DataTypes.STRING,
-        address_street_number: DataTypes.INTEGER
+        postal_code: DataTypes.INTEGER,
+        postal_code_suffix: DataTypes.INTEGER,
+        route: DataTypes.STRING,
+        street_number: DataTypes.INTEGER
     }, {});
     Group.associate = function (models) {
         // associations can be defined here
