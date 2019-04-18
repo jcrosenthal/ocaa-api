@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      format: {
+        type: Sequelize.STRING
+      },
       is_wheelchair_accessible: {
         type: Sequelize.BOOLEAN
       },
@@ -27,10 +30,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       address_lat: {
-        type: Sequelize.STRING
+        type: Sequelize.DECIMAL(10,6)
       },
       address_lng: {
-        type: Sequelize.STRING
+        type: Sequelize.DECIMAL(10,6)
       },
       address_locality: {
         type: Sequelize.STRING
