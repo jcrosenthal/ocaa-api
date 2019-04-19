@@ -74,10 +74,14 @@ app.get('/api/meetings/:groupId?', (req, res) => {
             }]
         })
     } else {
-        query = Meeting.findAll({})
+        query = Meeting.findAll({
+            include: [{
+                model: Group
+            }]
+        })
     }
     return query.then(meetings => res.json(meetings))
-})
+});
 
 app.post('/api/days', (req, res) => {
     Day.create(req.body)
