@@ -20,19 +20,19 @@ const {
     Day
 } = require('./models');
 
-var allowedOrigins = ['http://0.0.0.0:8080'];
+var allowedOrigins = ['http://0.0.0.0:8080/*', 'http://localhost:8080/*'];
 app.use(cors({
-  origin: function(origin, callback){
-    // allow requests with no origin 
-    // (like mobile apps or curl requests)
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
-      var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+    origin: function (origin, callback) {
+        // // allow requests with no origin 
+        // // (like mobile apps or curl requests)
+        // if (!origin) return callback(null, true);
+        // if (allowedOrigins.indexOf(origin) === -1) {
+        //     var msg = 'The CORS policy for this site does not ' +
+        //         'allow access from the specified Origin.';
+        //     return callback(new Error(msg), false);
+        // }
+        return callback(null, true);
     }
-    return callback(null, true);
-  }
 }));
 
 // create a group
@@ -64,6 +64,7 @@ app.post('/api/groups', (req, res) => {
 
 app.get('/api/meetings/:groupId?', (req, res) => {
     let query;
+    console.log('req.params.groupId', req.params.groupId);
     if (req.params.groupId) {
         query = Meeting.findAll({
             include: [{
@@ -101,15 +102,26 @@ app.post('/api/formats', (req, res) => {
 });
 
 // get all groups
-app.get('/api/groups', (req, res) => {
-    Group.findAll({
-            include: [{
-                model: Meeting,
-                where: {
-                    group_id: Sequelize.col('group.id')
-                }
-            }]
-        })
+app.get('/api/groups/:groupId?', (req, res) => {
+    console.log('req.body.groupId', req.params.groupId);
+    let findObj = {
+        include: [{
+            model: Meeting,
+            where: {
+                group_id: Sequelize.col('group.id')
+            }
+        }]
+    };
+
+    const groupId = req.params.groupId;
+
+    if (groupId) {
+        findObj.where = {
+            id: groupId,
+        };
+    }
+
+    Group.findAll(findObj)
         .then(groups => res.json(groups));
 
 });
