@@ -3,6 +3,10 @@ const {
 } = require('../models');
 
 module.exports = (app) => {
+    app.get('/', (req, res) => {
+        res.json({'message' : 'hello.'})
+    });
+    
     app.get('/api/days', (req, res) => {
         Day.findAll().then(days => res.json(days))
     });
