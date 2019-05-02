@@ -13,7 +13,7 @@
     },
     "dialectOptions": {
       "ssl": "Amazon RDS"
-    },
+    }
   },
   "production": {
     "username": "jcrosenthal",
@@ -29,6 +29,6 @@
     },
     "dialectOptions": {
       "ssl": "Amazon RDS"
-    },
+    }
   }
 }
