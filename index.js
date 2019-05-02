@@ -6,9 +6,10 @@ const app = express()
 app.use(bodyParser.json())
 
 // API ENDPOINTS
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Running on http://localhost:${port}`)
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Running on http://localhost:${PORT}`)
 });
 
 var allowedOrigins = [
