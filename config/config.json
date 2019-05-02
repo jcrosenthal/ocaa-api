@@ -4,13 +4,25 @@
     "password": "MMQ(dBykPXusfa8RLnmB",
     "database": "ocaameetings",
     "host": "ocaa-meetings.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 20000,
+      "acquire": 20000
+    }
   },
   "production": {
     "username": "jcrosenthal",
     "password": "MMQ(dBykPXusfa8RLnmB",
     "database": "ocaameetings",
     "host": "ocaa-meetings.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 20000,
+      "acquire": 20000
+    }
   }
 }
