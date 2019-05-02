@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "ocaa",
-    "host": "127.0.0.1",
+    "username": "jcrosenthal",
+    "password": "MMQ(dBykPXusfa8RLnmB",
+    "database": "ocaameetings",
+    "host": "ocaa-meetings.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "production": {

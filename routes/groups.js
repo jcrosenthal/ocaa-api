@@ -8,7 +8,7 @@ const {
 module.exports = (app) => {
 
     // create a group
-    app.post('/api/groups', (req, res) => {
+    app.post('/groups', (req, res) => {
 
         Group.create(Object.assign({}, req.body, {
                 meetings: undefined
@@ -35,12 +35,12 @@ module.exports = (app) => {
     });
 
     // get all groups
-    app.get('/api/groups/:groupId?', (req, res) => {
+    app.get('/groups/:groupId?', (req, res) => {
         let findObj = {
             include: [{
                 model: Meeting,
                 where: {
-                    group_id: Sequelize.col('group.id')
+                    group_id: Sequelize.col('Group.id')
                 }
             }]
         };
