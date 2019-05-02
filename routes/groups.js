@@ -8,7 +8,7 @@ const {
 module.exports = (app) => {
 
     // create a group
-    app.post('/groups', (req, res) => {
+    app.post('/api/groups', (req, res) => {
 
         Group.create(Object.assign({}, req.body, {
                 meetings: undefined
@@ -35,7 +35,7 @@ module.exports = (app) => {
     });
 
     // get all groups
-    app.get('/groups/:groupId?', (req, res) => {
+    app.get('/api/groups/:groupId?', (req, res) => {
         let findObj = {
             include: [{
                 model: Meeting,

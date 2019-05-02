@@ -4,7 +4,7 @@ const {
 } = require('../models');
 
 module.exports = (app) => {
-    app.get('/meetings/:groupId?', (req, res) => {
+    app.get('/api/meetings/:groupId?', (req, res) => {
         let query;
         if (req.params.groupId) {
             query = Meeting.findAll({
@@ -25,7 +25,7 @@ module.exports = (app) => {
         return query.then(meetings => res.json(meetings))
     });
 
-    app.post('/meetings', (req, res) => {
+    app.post('/api/meetings', (req, res) => {
         Meeting.create(req.body)
             .then(meeting => res.json(meeting))
     });

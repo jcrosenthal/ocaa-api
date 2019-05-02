@@ -3,15 +3,15 @@ const {
 } = require('../models');
 
 module.exports = (app) => {
-    app.get('/', (req, res) => {
+    app.get('/api', (req, res) => {
         res.json({'message' : 'hello.'})
     });
     
-    app.get('/days', (req, res) => {
+    app.get('/api/days', (req, res) => {
         Day.findAll().then(days => res.json(days))
     });
     
-    app.post('/days', (req, res) => {
+    app.post('/api/days', (req, res) => {
         Day.create(req.body)
             .then(day => res.json(day))
     });
