@@ -2,13 +2,15 @@ const {
     Day
 } = require('../models');
 
+var path = require('path');
+
 module.exports = (app) => {
     app.get('/api', (req, res) => {
         res.json({'message' : 'api.'})
     });
 
     app.get('/', (req, res) => {
-        res.json({'message' : 'hello.'})
+        res.sendFile(path.join(__dirname + '/index.html'));
     });
     
     app.get('/api/days', (req, res) => {
