@@ -4,6 +4,10 @@ const {
 
 module.exports = (app) => {
     app.get('/api', (req, res) => {
+        res.json({'message' : 'api.'})
+    });
+
+    app.get('/', (req, res) => {
         res.json({'message' : 'hello.'})
     });
     
