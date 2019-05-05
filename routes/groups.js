@@ -34,6 +34,37 @@ module.exports = (app) => {
 
     });
 
+    app.put('/api/groups/:groupId', (req, res) => {
+
+        const update = Object.assign({}, {
+            name: req.body.name,
+            is_wheelchair_accessible: req.body.is_wheelchair_accessible,
+            administrative_area_level_1: req.body.administrative_area_level_1,
+            administrative_area_level_2: req.body.administrative_area_level_2,
+            administrative_area_level_3: req.body.administrative_area_level_3,
+            lat: req.body.lat,
+            lng: req.body.lng,
+            locality: req.body.locality,
+            neighborhood: req.body.neighborhood,
+            location: req.body.location,
+            postal_code: req.body.postal_code,
+            postal_code_suffix: req.body.postal_code_suffix,
+            route: req.body.route,
+            street_number: req.body.street_number,
+        });
+
+        Group.update(update, {
+                where: {
+                    id: req.params.groupId
+                }
+            })
+            .then((rowsUpdated) => {
+                res.json(rowsUpdated);
+            })
+            .catch((res) => console.log(res));
+
+    });
+
     // get all groups
     app.get('/api/groups/:groupId?', (req, res) => {
         let findObj = {
