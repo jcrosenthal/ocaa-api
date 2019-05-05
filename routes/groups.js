@@ -53,6 +53,24 @@ module.exports = (app) => {
             street_number: req.body.street_number,
         });
 
+        const meetings = req.body.meetings.map(meeting => Object.assign({}, meeting, {
+            group_id: req.params.groupId,
+            id: undefined,
+            createdAt: undefined,
+            updatedAt: undefined
+        }));
+
+        Meeting.destroy({
+            where: {
+                group_id: req.params.groupId
+            }
+        });
+
+        Meeting.bulkCreate(meetings)
+            .then(() => {
+                return res.json(req.params.groupId);
+            });
+
         Group.update(update, {
                 where: {
                     id: req.params.groupId
