@@ -8,9 +8,9 @@
   },
   "production": {
     "username": "jcrosenthal",
-    "password": "MMQ(dBykPXusfa8RLnmB",
-    "database": "ocaameetings",
-    "host": "ocaa-meetings.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
+    "password": "rKGb3Q^tXwMRZkWHdFUT",
+    "database": "ocaa_micro",
+    "host": "ocaa-micro.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "pool": {
       "max": 5,
