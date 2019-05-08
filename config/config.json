@@ -1,19 +1,10 @@
 {
   "development": {
-    "username": "jcrosenthal",
-    "password": "rKGb3Q^tXwMRZkWHdFUT",
-    "database": "ocaa_micro",
-    "host": "ocaa-micro.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql",
-    "pool": {
-      "max": 5,
-      "min": 0,
-      "idle": 20000,
-      "acquire": 20000
-    },
-    "dialectOptions": {
-      "ssl": "Amazon RDS"
-    }
+    "username": "root",
+    "password": "root",
+    "database": "ocaa",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
   "production": {
     "username": "jcrosenthal",
