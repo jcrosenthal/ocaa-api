@@ -20,8 +20,8 @@ app.use(function (req, res, next) {
 
 var allowedOrigins = [
     'https://orangenyaa.org',
-    'http://localhost:8080',
-    'http://0.0.0.0:8080'
+    'https://localhost:8080',
+    'https://0.0.0.0:8080'
 ];
 
 app.use(cors({
