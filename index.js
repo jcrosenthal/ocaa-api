@@ -4,9 +4,11 @@ var cors = require('cors');
 const app = express();
 
 app.use(bodyParser.json())
+
 // API ENDPOINTS
 const PORT = process.env.PORT || 5000;
-
+const NODE_ENV = process.env.NODE_ENV || 'development';
+console.log(process.env.NODE_ENV);
 app.listen(PORT, () => {
     console.log(`Running on http://localhost:${PORT}`)
 });
@@ -17,24 +19,23 @@ app.use(function (req, res, next) {
     next();
 });
 
-var allowedOrigins = [
-    'https://orangenyaa.org',
-    'https://localhost:8080',
-    'https://0.0.0.0:8080'
-];
+const isProd = NODE_ENV === 'production';
+const allowedOrigin = isProd ? 'https://orangenyaa.org' : 'https://0.0.0.0:8080';
 
 app.use(cors({
-    origin: function (origin, callback) {
+    origin: (origin, callback) => {
         // allow requests with no origin 
         // (like mobile apps or curl requests)
         if (!origin) {
             return callback(null, true);
         }
-        if (allowedOrigins.indexOf(origin) === -1) {
+
+        if (!allowedOrigin.includes(origin)) {
             var msg = 'The CORS policy for this site does not ' +
                 'allow access from the specified Origin.' + origin;
             return callback(new Error(msg), false);
         }
+
         return callback(null, true);
     }
 }));
