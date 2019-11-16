@@ -4,7 +4,6 @@ var cors = require('cors');
 const app = express();
 
 app.use(bodyParser.json())
-
 // API ENDPOINTS
 const PORT = process.env.PORT || 5000;
 
