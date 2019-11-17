@@ -26,9 +26,10 @@ module.exports = (app) => {
                                 }
                             });
                     });
-                } else {
-                    return res.json(group);
+                    return;
                 }
+
+                return res.json(group);
 
             });
 
@@ -104,6 +105,37 @@ module.exports = (app) => {
 
         Group.findAll(findObj)
             .then(groups => res.json(groups));
+
+    });
+
+    app.delete('/api/groups/:groupId?', (req, res) => {
+        let findObj = {};
+
+        const groupId = req.params.groupId;
+
+        if (groupId) {
+            findObj.where = {
+                id: groupId,
+            };
+        } else {
+            return false;
+        }
+
+        Meeting.destroy({
+            where: {
+                group_id: groupId
+            }
+        });
+
+        Group.destroy({
+            where: {
+                id: groupId
+            }
+        });
+
+        return res.json({
+            message: 'Group Deleted'
+        });
 
     });
 
