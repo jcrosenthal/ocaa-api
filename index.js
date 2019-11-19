@@ -1,14 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-var cors = require('cors');
+const cors = require('cors');
 const app = express();
+const passport = require('passport');
+require('./passport');
 
 app.use(bodyParser.json())
 
 // API ENDPOINTS
 const PORT = process.env.PORT || 5000;
-const NODE_ENV = process.env.NODE_ENV || 'development';
-console.log(process.env.NODE_ENV);
+const NODE_ENV = process.env.NODE_ENV;
+
 app.listen(PORT, () => {
     console.log(`Running on http://localhost:${PORT}`)
 });
@@ -39,5 +41,32 @@ app.use(cors({
         return callback(null, true);
     }
 }));
+
+// catch 404 and forward to error handler
+// app.use(function (req, res, next) {
+//     var err = new Error('Not Found');
+//     err.status = 404;
+//     next(err);
+// });
+
+// // error handler
+// app.use(function (err, req, res, next) {
+//     // set locals, only providing error in development
+//     res.locals.message = err.message;
+//     res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+//     // render the error page
+//     res.status(err.status || 500);
+//     res.render('error');
+// });
+
+const auth = require('./routes/auth');
+const user = require('./routes/user');
+
+app.use('/user', passport.authenticate('jwt', {
+    session: false
+}), user);
+
+app.use('/auth', auth);
 
 require('./routes')(app);
