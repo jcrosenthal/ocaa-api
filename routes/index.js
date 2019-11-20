@@ -12,12 +12,6 @@ module.exports = (app) => {
         res.sendFile(path.join(__dirname + '/index.html'));
     });
 
-    app.get('/api', (req, res) => {
-        res.json({
-            'message': 'api.'
-        })
-    });
-
     app.use('/groups', groups);
     app.use('/meetings', meetings);
 
