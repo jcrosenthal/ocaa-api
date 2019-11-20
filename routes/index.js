@@ -28,12 +28,19 @@ module.exports = (app) => {
         session: false
     }), users);
 
-    app.post('*', passport.authenticate('jwt', {
+    app.post(/^\/(meetings|days|formats|groups)\/+$/, passport.authenticate('jwt', {
         session: false
     }), (req, res, next) => {
         console.log('POST happen');
         next();
-    })
+    });
+
+    app.put(/^\/(meetings|days|formats|groups)\/.+$/, passport.authenticate('jwt', {
+        session: false
+    }), (req, res, next) => {
+        console.log('POST happen');
+        next();
+    });
 
     app.use('/auth', auth);
 

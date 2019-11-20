@@ -8,7 +8,7 @@ const {
 } = require('../models');
 
 // create a group
-app.post('/api/groups', (req, res) => {
+app.post('/', (req, res) => {
 
     Group.create(Object.assign({}, req.body, {
             meetings: undefined
@@ -35,7 +35,7 @@ app.post('/api/groups', (req, res) => {
 
 });
 
-app.put('/api/groups/:groupId', (req, res) => {
+app.put('/:groupId', (req, res) => {
 
     const update = Object.assign({}, {
         name: req.body.name,
@@ -85,7 +85,7 @@ app.put('/api/groups/:groupId', (req, res) => {
 });
 
 // get all groups
-app.get('/api/groups/:groupId?', (req, res) => {
+app.get('/:groupId?', (req, res) => {
     let findObj = {
         include: [{
             model: Meeting,
@@ -108,7 +108,7 @@ app.get('/api/groups/:groupId?', (req, res) => {
 
 });
 
-app.delete('/api/groups/:groupId?', (req, res) => {
+app.delete('/:groupId', (req, res) => {
     let findObj = {};
 
     const groupId = req.params.groupId;

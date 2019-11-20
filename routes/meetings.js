@@ -6,7 +6,7 @@ const {
 var express = require('express');
 var app = express.Router();
 
-app.get('/api/meetings/:groupId?', (req, res) => {
+app.get('/:groupId?', (req, res) => {
     let query;
     if (req.params.groupId) {
         query = Meeting.findAll({
@@ -27,7 +27,7 @@ app.get('/api/meetings/:groupId?', (req, res) => {
     return query.then(meetings => res.json(meetings))
 });
 
-app.post('/api/meetings', (req, res) => {
+app.post('/', (req, res) => {
     Meeting.create(req.body)
         .then(meeting => res.json(meeting))
 });
