@@ -28,8 +28,6 @@ passport.use(new LocalStrategy({
 
                 const user = res[0].dataValues;
 
-                console.log('resuser', user);
-
                 if (!user) {
                     return cb(null, false, {
                         message: 'Incorrect email or password.'
@@ -48,7 +46,7 @@ passport.use(new LocalStrategy({
 
 passport.use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey: 'your_jwt_secret'
+        secretOrKey: 'ocaa_' + process.env.NODE_ENV
     },
     function (jwtPayload, cb) {
 
