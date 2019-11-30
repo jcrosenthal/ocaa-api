@@ -7,7 +7,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": true,
     "username": "jcrosenthal",
     "password": "rKGb3Q^tXwMRZkWHdFUT",
     "database": "ocaa_micro",
