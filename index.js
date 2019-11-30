@@ -10,6 +10,8 @@ app.use(bodyParser.json())
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV;
 
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
 const isProd = NODE_ENV === 'production';
 const allowedOrigin = isProd ? 'https://orangenyaa.org' : 'https://0.0.0.0:8080';
 
