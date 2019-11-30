@@ -20,8 +20,8 @@
     "nodemon": "^1.18.11"
   },
   "scripts": {
-    "dev": "NODE_ENV=development; nodemon ./bin/www",
-    "prod": "NODE_ENV=production; nodemon ./bin/www",
+    "dev": "NODE_ENV=development && nodemon ./bin/www",
+    "prod": "NODE_ENV=production && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
