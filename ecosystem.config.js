@@ -8,11 +8,8 @@ module.exports = {
     autorestart: true,
     watch: true,
     max_memory_restart: '1G',
-    env: {
-      NODE_ENV: 'development'
-    },
-    env_production: {
-      NODE_ENV: 'production'
+    "env_production": {
+      "NODE_ENV": "production"
     }
   }],
   deploy: {
@@ -22,11 +19,14 @@ module.exports = {
       host: 'ec2-54-85-108-245.compute-1.amazonaws.com',
       ref: 'origin/master',
       repo: 'https://github.com/JamesRosenthal/ocaa-api.git',
-      'pre-setup': 'rm -rf ocaa-api; npm i pm2 -g; sudo yum install -y git; export NODE_ENV=production',
+      'pre-setup': 'rm -rf ocaa-api; npm i pm2 -g; sudo yum install -y git',
       ssh_options: "StrictHostKeyChecking=no",
       path: '/home/ec2-user/ocaa-api',
       // 'post-setup': 'ls -la;',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production && npm run prod'
+      'post-deploy': 'export NODE_ENV=production && npm install && pm2 reload ecosystem.config.js --env production && npm run prod',
+      "env": {
+        "NODE_ENV": "production"
+      }
     }
   }
 };
