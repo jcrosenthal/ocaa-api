@@ -16,7 +16,7 @@ module.exports = {
     production: {
       key: './keys/ocaa.pem',
       user: 'ec2-user',
-      host: 'ec2-54-85-108-245.compute-1.amazonaws.com',
+      host: 'ec2-3-215-140-200.compute-1.amazonaws.com',
       ref: 'origin/master',
       repo: 'https://github.com/JamesRosenthal/ocaa-api.git',
       'pre-setup': 'rm -rf ocaa-api; npm i pm2 -g; sudo yum install -y git',
