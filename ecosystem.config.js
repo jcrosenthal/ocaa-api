@@ -22,7 +22,7 @@ module.exports = {
       host: 'ec2-54-85-108-245.compute-1.amazonaws.com',
       ref: 'origin/master',
       repo: 'https://github.com/JamesRosenthal/ocaa-api.git',
-      'pre-setup': 'export NODE_ENV=production'
+      'pre-setup': 'export NODE_ENV=production',
       ssh_options: "StrictHostKeyChecking=no",
       path: '/home/ec2-user/ocaa-api',
       // 'post-setup': 'ls -la;',
