@@ -22,7 +22,7 @@ module.exports = {
       'pre-setup': 'rm -rf ocaa-api; npm i pm2 -g; sudo yum install -y git',
       ssh_options: "StrictHostKeyChecking=no",
       path: '/home/ec2-user/ocaa-api',
-      // 'post-setup': 'ls -la;',
+      port: '5000',
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production && npm run prod',
       "env": {
         "NODE_ENV": "production"
