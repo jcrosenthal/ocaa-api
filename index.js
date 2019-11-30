@@ -13,6 +13,9 @@ const NODE_ENV = process.env.NODE_ENV;
 const isProd = NODE_ENV === 'production';
 const allowedOrigin = isProd ? 'https://orangenyaa.org' : 'https://0.0.0.0:8080';
 
+console.log('NODE_ENV', NODE_ENV);
+console.log('allowedOrigin', allowedOrigin);
+
 app.listen(PORT, () => {
     console.log(`Running on http://localhost:${PORT}`)
 });
