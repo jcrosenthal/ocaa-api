@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const Meeting = sequelize.define('Meeting', {
     id: {
@@ -13,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     notes: DataTypes.STRING,
     format: DataTypes.STRING
   }, {});
+
   Meeting.associate = function (models) {
     // associations can be defined here
     Meeting.belongsTo(models.Group, {
@@ -20,5 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     })
   };
+
   return Meeting;
+
 };
