@@ -2,11 +2,11 @@
 module.exports = {
   apps: [{
     name: 'OCAA API',
-    script: './index.js',
-    // script: 'nodemon ./bin/www',``
+    // script: './index.js',
+    script: 'nodemon ./bin/www',
     instances: 1,
     autorestart: true,
-    watch: false,
+    watch: true,
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'development'
@@ -22,9 +22,10 @@ module.exports = {
       host: 'ec2-54-85-108-245.compute-1.amazonaws.com',
       ref: 'origin/master',
       repo: 'https://github.com/JamesRosenthal/ocaa-api.git',
-      "ssh_options": "StrictHostKeyChecking=no",
+      'pre-setup': 'export NODE_ENV=production'
+      ssh_options: "StrictHostKeyChecking=no",
       path: '/home/ec2-user/ocaa-api',
-      // 'post-setup': 'ls -la; cp ocaa-api/. .',
+      // 'post-setup': 'ls -la;',
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production && npm run prod'
     }
   }
