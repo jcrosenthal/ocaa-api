@@ -23,7 +23,7 @@ module.exports = {
       ssh_options: "StrictHostKeyChecking=no",
       path: '/home/ec2-user/ocaa-api',
       // 'post-setup': 'ls -la;',
-      'post-deploy': 'export NODE_ENV=production && npm install && pm2 reload ecosystem.config.js --env production && npm run prod',
+      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production && npm run prod',
       "env": {
         "NODE_ENV": "production"
       }
