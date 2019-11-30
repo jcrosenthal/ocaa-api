@@ -10,7 +10,7 @@ const db = {};
 
 let sequelize;
 
-console.log(config);
+console.log(process.env);
 
 sequelize = new Sequelize(config.database, config.username, config.password, Object.assign(config, {
   maxConcurrentQueries: 100,
