@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV;
 
 const isProd = NODE_ENV === 'production';
-const allowedOrigin = isProd ? 'https://orangenyaa.org' : 'https://0.0.0.0:8080';
+const allowedOrigin = isProd ? 'https://orangenyaa.org' : 'https://0.0.0.0:8081';
 
 app.listen(PORT, () => {
     console.log(`Running on http://localhost:${PORT}`)
@@ -22,6 +22,8 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+
 
 app.use(cors({
     origin: (origin, callback) => {

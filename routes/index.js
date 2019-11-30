@@ -25,18 +25,14 @@ module.exports = (app) => {
     app.post(/^\/(meetings|days|formats|groups)\/+$/, passport.authenticate('jwt', {
         session: false
     }), (req, res, next) => {
+        console.log('POST happen');
         next();
     });
 
-    app.put('*', passport.authenticate('jwt', {
+    app.put(/^\/(meetings|days|formats|groups)\/.+$/, passport.authenticate('jwt', {
         session: false
     }), (req, res, next) => {
-        next();
-    });
-
-    app.delete('*', passport.authenticate('jwt', {
-        session: false
-    }), (req, res, next) => {
+        console.log('POST happen');
         next();
     });
 
