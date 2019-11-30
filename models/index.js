@@ -5,22 +5,20 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV;
-console.log(process.env.NODE_ENV, process.env, require(__dirname + '/../config/config.json'));
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, Object.assign(config, {
-    maxConcurrentQueries: 100,
-    pool: {
-      maxConnections: 5,
-      maxIdleTime: 30
-    }
-  }));
-}
+
+console.log(config);
+
+sequelize = new Sequelize(config.database, config.username, config.password, Object.assign(config, {
+  maxConcurrentQueries: 100,
+  pool: {
+    maxConnections: 5,
+    maxIdleTime: 30
+  }
+}));
 
 fs
   .readdirSync(__dirname)
