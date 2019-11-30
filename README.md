@@ -6,7 +6,7 @@
 
 `$ ssh -i "api.pem" ec2-user@ec2-3-215-140-200.compute-1.amazonaws.com`
 
-`$ rm -rf ocas-api`
+`$ rm -rf ocaa-api`
 
 `$ git clone https://github.com/JamesRosenthal/ocaa-api.git`
 
