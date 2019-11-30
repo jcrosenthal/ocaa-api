@@ -9,7 +9,20 @@ const auth = require('./auth');
 module.exports = (app) => {
 
     app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname + '/index.html'));
+        // res.sendFile(path.join(__dirname + '/index.html'));
+        res.set('Content-Type', 'text/html');
+        res.send(new Buffer(`<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Health Check</title>
+        </head>
+        <body>
+            <p>Health Check</p>
+        </body>
+        </html>`));
     });
 
     app.use('/users', passport.authenticate('jwt', {
