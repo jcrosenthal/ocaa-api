@@ -10,9 +10,6 @@ const db = {};
 
 let sequelize;
 
-// console.log(process.env);
-// /rds-ca-2019-root.pem
-// /rds-combined-ca-bundle.pem
 const rdsCa = fs.readFileSync(__dirname + '/rds-combined-ca-bundle.pem');
 
 sequelize = new Sequelize(config.database, config.username, config.password, Object.assign(config, {
@@ -35,8 +32,6 @@ sequelize = new Sequelize(config.database, config.username, config.password, Obj
     }
   }
 }));
-
-console.log(sequelize);
 
 fs
   .readdirSync(__dirname)

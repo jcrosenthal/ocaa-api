@@ -16,9 +16,6 @@ passport.use(new LocalStrategy({
     },
     function (email, password, cb) {
 
-        console.log(email,
-            password)
-
         //Assume there is a DB module pproviding a global UserModel
         return User.findAll({
                 limit: 1,
@@ -28,8 +25,6 @@ passport.use(new LocalStrategy({
                 }
             })
             .then(res => {
-
-                console.log('res', res);
 
                 const user = res[0].dataValues;
 
