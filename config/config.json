@@ -14,7 +14,7 @@
     "host": "ocaa-micro.cxkgeapmyuo9.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "pool": {
-      "max": 5,
+      "max": 50,
       "min": 0,
       "idle": 20000,
       "acquire": 20000
