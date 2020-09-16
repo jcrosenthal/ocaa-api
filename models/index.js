@@ -10,7 +10,19 @@ const db = {};
 
 let sequelize;
 
-const rdsCa = fs.readFileSync(__dirname + '/rds-combined-ca-bundle.pem');
+const rdsCa = env === 'production' ? fs.readFileSync(__dirname + '/rds-combined-ca-bundle.pem') : '';
+const dialectOptions = env === 'production' ? {
+  ssl: {
+    rejectUnauthorized: true,
+    ca: [rdsCa],
+    checkServerIdentity: (host, cert) => {
+      const error = tls.checkServerIdentity(host, cert);
+      if (error && !cert.subject.CN.endsWith('.rds.amazonaws.com')) {
+        return error;
+      }
+    }
+  }
+} : '';
 
 sequelize = new Sequelize(config.database, config.username, config.password, Object.assign(config, {
   maxConcurrentQueries: 100,
@@ -19,18 +31,7 @@ sequelize = new Sequelize(config.database, config.username, config.password, Obj
     maxIdleTime: 30
   },
   dialect: 'mysql',
-  "dialectOptions": {
-    "ssl": {
-      rejectUnauthorized: true,
-      ca: [rdsCa],
-      checkServerIdentity: (host, cert) => {
-        const error = tls.checkServerIdentity(host, cert);
-        if (error && !cert.subject.CN.endsWith('.rds.amazonaws.com')) {
-          return error;
-        }
-      }
-    }
-  }
+  dialectOptions: dialectOptions
 }));
 
 fs
