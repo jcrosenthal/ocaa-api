@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
+    "username": "user",
+    "password": "pass",
     "database": "ocaa",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "ocaa-db",
+    "dialect": "mysql",
+    "port": 3306
   },
   "production": {
     "use_env_variable": true,

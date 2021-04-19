@@ -1,0 +1,46 @@
+version: '3.5'
+services:
+    ocaa-db:
+        image: mysql:5.6
+        container_name: ocaa-db
+        ports:
+            - '4306:3306'
+        volumes:
+            - ./mysql-dump:/docker-entrypoint-initdb.d
+        environment:
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=pass
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=ocaa
+            - DB_HOST=mysqldb
+            - DB_PORT=3306
+        networks:
+            - ocaa
+        restart: always
+
+    ocaa-api:
+        build: .
+        image: ocaa-api
+        container_name: ocaa-api
+        command: npm run dev
+        depends_on:
+            - ocaa-db
+        links:
+            - ocaa-db
+        environment:
+            NODE_ENV: development
+            PORT: 5001
+        ports:
+            - '5001:5001'
+        volumes:
+            - .:/usr/src
+            - nodemodules:/usr/src/node_modules
+        networks:
+            - ocaa
+
+networks:
+    ocaa:
+        name: ocaa
+
+volumes:
+  nodemodules:

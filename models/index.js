@@ -8,6 +8,9 @@ const env = process.env.NODE_ENV;
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+// const cKey = fs.readFileSync(__dirname + '/key.pem')
+// const cCert = fs.readFileSync(__dirname + '/cert.pem')
+
 let sequelize;
 
 const rdsCa = env === 'production' ? fs.readFileSync(__dirname + '/rds-combined-ca-bundle.pem') : '';
@@ -22,7 +25,9 @@ const dialectOptions = env === 'production' ? {
       }
     }
   }
-} : '';
+} : {};
+
+console.log(config)
 
 sequelize = new Sequelize(config.database, config.username, config.password, Object.assign(config, {
   maxConcurrentQueries: 100,
@@ -31,8 +36,17 @@ sequelize = new Sequelize(config.database, config.username, config.password, Obj
     maxIdleTime: 30
   },
   dialect: 'mysql',
-  dialectOptions: dialectOptions
+  dialectOptions
 }));
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 fs
   .readdirSync(__dirname)
